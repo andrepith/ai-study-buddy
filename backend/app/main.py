@@ -6,7 +6,7 @@ load_dotenv()
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import quiz
+from app.routers import quiz, notes
 
 app = FastAPI(title="AI Study Buddy API")
 
@@ -20,6 +20,9 @@ app.add_middleware(
 
 # Register quiz router
 app.include_router(quiz.router)
+
+# Register Notes router
+app.include_router(notes.router)
 
 
 @app.get("/health")
