@@ -10,3 +10,19 @@ export const generateQuiz = async (content, numQuestions = 5, difficulty = 'medi
   });
   return response.data;
 };
+
+export const generateSummary = async (content, formatStyle = 'bullet_points') => {
+  const response = await axios.post(`${API_BASE_URL}/notes/summarize`, {
+    content,
+    format_style: formatStyle,
+  });
+  return response.data;
+};
+
+export const explainConcept = async (concept, targetAudience = 'beginner') => {
+  const response = await axios.post(`${API_BASE_URL}/notes/explain`, {
+    concept,
+    target_audience: targetAudience,
+  });
+  return response.data;
+};
